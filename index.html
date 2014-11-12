@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<style>
+body, html{
+	/*height: 100%;*/
+}
+#wrapper{
+	margin: 0 auto;
+	width: 1000px;
+	/*min-width: 600px;*/
+	/*outline: 1px solid red;*/
+	display: table;
+	/*height: 100%;*/
+	/*margin-top: -280px;*/
+	/*padding-top: 280px;*/
+	text-align: center;
+}
+#wrapper>div:first-child{
+	color:green;
+	/*outline: 1px solid green;*/
+	display: table-cell;
+	/*width:100px;*/
+	/*padding: 10px;*/
+	/*vertical-align: middle;*/
+	width:50%;
+}
+ #wrapper>div:first-child+div{
+	/*vertical-align: middle;*/
+	color:gray;
+	display: table-cell;
+	/*outline: 1px solid gray;*/
+}
+</style>
+<body>
+	<div id="wrapper">
+		<div>
+			<div>
+				<button onclick="clearInterval(myinterval); prev('images','img')">Назад</button>
+				<button onclick="clearInterval(myinterval); next('images','img')">Вперед</button>
+			</div>
+			<img src="images/image_0.jpg" alt="" id="img">
+		</div>
+		<div>
+			<div>
+				<button onclick="clearInterval(myinterval); prev('images/nonetranslate','imgtwo')">Назад</button>
+				<button onclick="clearInterval(myinterval); next('images/nonetranslate','imgtwo')">Вперед</button>
+			</div>
+			<img src="images/nonetranslate/image_0.jpg" alt="" id="imgtwo">
+		</div>
+	</div>
+	<center><button id="randombut" onclick="clearInterval(myinterval); randomword()">Случайно</button></center>
+	<center><button id="autorand" onclick="autorand()">Авто</button></center>
+</body>
+</html>
+<script type="text/javascript">
+	var myinterval;
+	const numspics = 95;
+	document.all.img.num = 0;
+	document.all.imgtwo.num = 0;
+	function next(path, elid){
+		imgelement = document.all[elid];
+		imgelement.num = (imgelement.num < numspics) ? parseInt(document.all[elid].src.slice(document.all[elid].src.indexOf("_")+1))+1 : imgelement.num;
+		document.all[elid].src = path+"/image_"+ imgelement.num +".jpg";
+	}
+	function prev(path, elid){
+		imgelement = document.all[elid];
+		imgelement.num = (imgelement.num > 0) ? parseInt(document.all[elid].src.slice(document.all[elid].src.indexOf("_")+1))-1 : imgelement.num;
+		document.all[elid].src = path+"/image_"+ imgelement.num +".jpg";
+	}
+	function randomword(){
+		var num = Math.floor(Math.random() * numspics);
+		document.all.img.src = "images/image_"+ num +".jpg";
+		num = Math.floor(Math.random() * numspics);
+		document.all.imgtwo.src = "images/nonetranslate/image_"+ num +".jpg";
+	}
+	function autorand(){
+		myinterval = setInterval("randomword()", 1000);
+	}
+</script>
+
+
+<!--
+	imgelement.num = (imgelement.num < 26)
+	parseInt(	slice(7)	)
+	image_82379827.jpg
+ -->

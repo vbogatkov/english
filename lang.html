@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<style>
+body, html{
+}
+div{
+	background: green;
+	color:white;
+	width:100px;
+	height:100px;
+	float: left;
+	font: 14px/90px tahoma;
+	margin: 2px;
+	text-align: center;
+	vertical-align: middle;
+}
+.wordtwo :first-child{
+	display: none;
+}
+.wordtwo{
+	line-height: 1em;
+	background: orange;
+	padding:5px;
+	width:90px;
+	height:90px;
+}
+.wordone>span+span{
+	display: none;
+}
+</style>
+<body>
+</body>
+</html>
+<script type="text/javascript">
+	var trans = {
+		"a":"неопре- деленный артикль",
+		"above":"наверху, выше, наверх, над, сверх",
+		"about":"о, вокруг, кругом, около, почти, приблизит.",
+		"after":"после, за, позади, несмотря на, впоследствии, потом, затем, позднее",
+		"again":"снова, опять, еще раз",
+		"all":"все, полный, максимальный, совершенно, вселенная, мир",
+		"also":"также, тоже, неудачник",
+		"an":"неопре- деленный артикль",
+		"and":"и, а, с, и так далее",
+		"as":"как, в качестве, так как, и..и.., который, какой, что",
+		"at":"в, у, около, на, при, за",
+		"are":"см. be",
+		"across":"через, поперек, на ту сторону, крест-накрест",
+		"although":"хотя, несмотря на то что",
+		"any":"какой-нибудь, всякий, любой, сколько-нибудь, несколько, никакой, нисколько",
+		"against":"против, на, к, по, о, у",
+		"back":"спина, назад, задний, поддерживать, пятиться, отступать",
+		"be":"(am is are was were been) быть, иметь место, существовать",
+		"been":"см. be",
+		"being":"бытие, жизнь, человек, существование, настоящий, существующий",
+		"before":"раньше, прежде, уже, впереди, перед, до, пока, скорее чем",
+		"between":"между, ни то ни се, ни рыба ни мясо",
+		"but":"но, однако, кроме, лишь, только, еще, просто",
+		"by":"у, около, посредством, сквозь, по направлению, в течение, до, к, по, согласно",
+		"can":"мочь, уметь, быть в состоянии, иметь возможность, бидон, жестянка",
+		"could":"выражает вежливую просьбу, упущенную возможность, сомнение, намерение",
+		"come":"приходить, появляться, приезжать",
+		"did":"см. do",
+		"do":"(did, done) делать, поступать, совершать, готовить, выполнять, создавать, творить, работать",
+		"don't":"запрет, не, не надо, перестань(те), полно",
+		"each":"каждый",
+		"find":"находить, найти, считать, находка",
+		"first":"первый, сначала",
+		"from":"из, от, с",
+		"for ":"для, за, из-за, на, в течение, в продолжение, ибо, так как",
+		"get":"доставать, получать, становиться, сделать, доезжать, попадать",
+		"go":"ходить, идти, уходить, уезжать, продолжать",
+		"his":"его, свой",
+		"had":"см. have",
+		"here":"тут, здесь, вот, сюда",
+		"he":"он",
+		"have":"иметь, владеть, обладать, быть вынужденным, получать",
+		"her":"",
+		"has":"",
+		"him":"его, ему, он, себя, собой",
+		"how":"как, каким образом",
+		"I":"я",
+		"if":"если, если бы, ли",
+		"into":"",
+		"in":"",
+		"is":"",
+		"its":"",
+		"it":"",
+		"just":"",
+		"know":"",
+		"little":"",
+		"like":"",
+		"make":"",
+		"may":"",
+		"many":"",
+		"me":"",
+		"my":"",
+		"more":"",
+		"much":"",
+		"most":"",
+		"not":"",
+		"now":"",
+		"no":"",
+		"new":"",
+		"nothing":"",
+		"of":"",
+		"old":"",
+		"on":"",
+		"one":"",
+		"only":"",
+		"out":"",
+		"other":"",
+		"or":"",
+		"over":"",
+		"our":"",
+		"part":"",
+		"place":"",
+		"people":"",
+		"present":"",
+		"said":"",
+		"she":"",
+		"so":"",
+		"some":"",
+		"should":"",
+		"see":"",
+		"sir":"",
+		"shall":"",
+		"same":"",
+		"such":"",
+		"still":"",
+		"state":"",
+		"take":"",
+		"the":"",
+		"to":"",
+		"that":"",
+		"they":"",
+		"this":"",
+		"there":"",
+		"their":"",
+		"them":"",
+		"then":"",
+		"these":"",
+		"time":"",
+		"two":"",
+		"tell":"",
+		"thing":"",
+		"through":"",
+		"though":"",
+		"than":"",
+		"think":"",
+		"under":"",
+		"upon":"",
+		"up":"",
+		"use":"",
+		"us":"",
+		"want":"",
+		"was":"",
+		"way":"",
+		"well":"",
+		"were":"",
+		"we":"",
+		"will":"",
+		"with":"",
+		"which":"",
+		"what":"",
+		"where":"",
+		"when":"",
+		"who":"",
+		"work":"",
+		"would":"",
+		"very":"",
+		"you":"",
+		"your":"",
+		"year ":""
+	}
+	for (prop in trans) {
+		if (trans.hasOwnProperty(prop)) {
+			document.body.innerHTML += '<div class="wordone" onselectstart="return false" onmousedown="return false" onclick="routezn()" ondblclick="return false"><span>'+prop+'</span><span>'+trans[prop]+'</span></div>';
+		}
+	}
+	function routezn() {
+		var thisel = event.target;
+		thisel.className = thisel.className.indexOf("wordtwo") == -1 ? "wordtwo" : "wordone";
+		return false;
+	}
+</script>
+
